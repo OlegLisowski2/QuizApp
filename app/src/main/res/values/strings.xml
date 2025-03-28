@@ -6,4 +6,7 @@
     <string name="sport">Sport</string>
     <string name="allgemeinwissen">Allgemeinwissen</string>
     <string name="willkommen">Willkommen zur Lernquiz-App</string>
+    <string name="quiz_herunterladen">Quiz herunterladen</string>
+    <string name="quiz_erstellen">Quiz erstellen</string>
+    <string name="homepage_noquiz">Sie müssen ein Quiz herunterladen oder erstellen um den Quiz zu spielen.</string>
 </resources>
