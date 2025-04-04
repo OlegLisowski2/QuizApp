@@ -44,7 +44,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/quiz_erstellen"
+        android:text="@string/btn_quiz_create"
         android:background="?attr/selectableItemBackgroundBorderless"
         style="?android:attr/buttonBarButtonStyle"
         android:textColor="@android:color/black"/>
@@ -61,7 +61,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/quiz_herunterladen"
+        android:text="@string/btn_quiz_install"
         android:background="?attr/selectableItemBackgroundBorderless"
         style="?android:attr/buttonBarButtonStyle"
         android:textColor="@android:color/black"/>
