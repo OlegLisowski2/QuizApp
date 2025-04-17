@@ -23,7 +23,18 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".QuizActivity" android:exported="true" />
+        <activity
+            android:name=".QuizActivity"
+            android:exported="true"
+            android:theme="@style/Theme.QuizApp"/>
+        <activity
+            android:name=".QuestionCreateActivity"
+            android:exported="true"
+            android:theme="@style/Theme.QuizApp"/>
+        <activity
+            android:name=".QuizCreateActivity"
+            android:exported="true"
+            android:theme="@style/ThemeMC.QuizApp"/>
 
     </application>
 

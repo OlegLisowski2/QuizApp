@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Pressed State -->
+
+    <!-- When pressed, animate translationZ down from 8dp to 2dp -->
     <item android:state_pressed="true">
         <objectAnimator
             android:propertyName="translationZ"
             android:duration="100"
-            android:valueTo="0dp"
-            android:valueType="floatType" />
+            android:valueFrom="8dp"
+            android:valueTo="2dp"
+            android:valueType="floatType"/>
     </item>
-    <!-- Default State -->
+
+    <!-- When released, animate back up from 2dp to 8dp -->
     <item>
         <objectAnimator
             android:propertyName="translationZ"
             android:duration="100"
+            android:valueFrom="2dp"
             android:valueTo="8dp"
-            android:valueType="floatType" />
+            android:valueType="floatType"/>
     </item>
+
 </selector>

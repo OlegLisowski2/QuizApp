@@ -10,4 +10,17 @@
     <color name="blue">#007bff</color>
     <color name="green">#28d826</color>
     <color name="yellow">#f4e90b</color>
+    <color name="green_dark">#28d826</color>
+
+    <!-- App primary colors -->
+    <color name="primaryLight">#BBDEFB</color>
+    <color name="primaryDark">#1976D2</color>
+
+    <!-- Green variants -->
+    <color name="greenLight">#A5D6A7</color>     <!-- Material Green 200 -->
+    <color name="greenDark">#388E3C</color>      <!-- Material Green 700 -->
+
+    <!-- Yellow variants -->
+    <color name="yellowLight">#FFF59D</color>    <!-- Material Yellow 200 -->
+    <color name="yellowDark">#FBC02D</color>     <!-- Material Yellow 700 -->
 </resources>
