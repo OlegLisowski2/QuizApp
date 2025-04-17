@@ -8,11 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.startseite)
+        setContentView(R.layout.homepage)
 
         val createButton: Button = findViewById(R.id.btnQuizErstellen)
         createButton.setOnClickListener {
-            val intent = Intent(this, QuestionCreateActivity::class.java)
+            val intent = Intent(this, QuizCreateActivity::class.java)
             startActivity(intent)
         }
     }

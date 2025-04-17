@@ -1,9 +1,26 @@
 <resources>
-    <string name="app_name">Quiz App</string>
+    <string name="app_name">Quiz-App</string>
     <string name="quiz_topic">Quiz Topic</string>
-    <string name="geschichte">Geschichte</string>
-    <string name="wissenschaft">Wissenschaft</string>
-    <string name="sport">Sport</string>
-    <string name="allgemeinwissen">Allgemeinwissen</string>
     <string name="willkommen">Willkommen zur Lernquiz-App</string>
+    <string name="header_create_quiz">Quiz Erstellen</string>
+    <string name="btn_to_maincreatepage">Zur Hauptseite</string>
+    <string name="question_create">Frage Erstellen</string>
+    <string name="enter_question">Frage eingeben…</string>
+    <string name="hint_answer_a">Antwort A</string>
+    <string name="hint_answer_b">Antwort B</string>
+    <string name="hint_answer_c">Antwort C</string>
+    <string name="hint_answer_d">Antwort D</string>
+    <string name="btn_previous_question">Vorherige Frage</string>
+    <string name="btn_next_question">Nächste Frage</string>
+    <string name="btn_create_quiz">Quiz Erstellen</string>
+    <string name="btn_install_quiz">Quiz Herunterladen</string>
+    <string name="homepage_noquiz">Sie müssen ein Quiz herunterladen oder erstellen, um einen Quiz zu spielen.</string>
+    <string name="give_quiz_name">Quiz Name…</string>
+    <string name="give_topic">Thema…</string>
+    <string name="give_time_per_question">Zeit pro Frage…</string>
+    <string name="give_question_number">Frage Nummer…</string>
+    <string name="edit_question">Frage bearbeiten</string>
+    <string name="btn_save_quiz">Quiz speichern</string>
+    <string name="number_of_questions">Die Anzahl der Fragen:</string>
+
 </resources>
