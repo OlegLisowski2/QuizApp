@@ -6,8 +6,8 @@
     <item android:top="6dp">
         <shape>
             <gradient
-                android:startColor="@color/greenLight"
-                android:endColor="@color/greenDark"
+                android:startColor="?attr/btnNormalStart"
+                android:endColor="?attr/btnNormalEnd"
                 android:angle="90"/>
             <corners android:radius="16dp"/>
         </shape>

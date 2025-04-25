@@ -2,17 +2,17 @@ package com.example.quizapp
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.button.MaterialButton
+import android.widget.Button
+import androidx.activity.ComponentActivity
 
-class QuizCreateActivity : AppCompatActivity() {
+class QuizCreateActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.quiz_create_page)
 
-        val btn: MaterialButton = findViewById(R.id.btnStartEditing)
+        val btn: Button = findViewById(R.id.btnStartEditing)
         btn.setOnClickListener {
-            val intent = Intent(this, QuestionCreateActivity::class.java)
+            val intent = Intent(this, QuizPagerActivity::class.java)
             startActivity(intent)
         }
     }

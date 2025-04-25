@@ -135,13 +135,14 @@
                 android:importantForAutofill="no"/>
 
             <!-- Button: Edit Question -->
-            <com.google.android.material.button.MaterialButton
+            <Button
                 android:id="@+id/btnStartEditing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/edit_question"
                 android:textSize="20sp"
-                android:backgroundTint="@color/yellow"
+                android:theme="@style/ThemeOverlay.QuizButton.Yellow"
+                app:backgroundTint="@color/noColor"
                 android:textColor="@android:color/black"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/button_selector"
@@ -149,26 +150,27 @@
                 android:elevation="8dp"
                 app:cornerRadius="16dp"
                 app:strokeWidth="0dp"
-                app:rippleColor="?attr/colorOnSurface"
+                app:rippleColor="@color/yellowDark"
                 android:textAllCaps="false"
                 />
 
             <!-- Button: Save Quiz -->
-            <com.google.android.material.button.MaterialButton
+            <Button
                 android:id="@+id/btnSaveQuiz"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_selector"
+                android:theme="@style/ThemeOverlay.QuizButton.Green"
+                app:backgroundTint="@color/noColor"
+                android:elevation="8dp"
                 android:stateListAnimator="@animator/button_state_animator"
                 android:text="@string/btn_save_quiz"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
-                android:elevation="8dp"
                 android:textSize="20sp"
-                app:strokeWidth="0dp"
-                app:rippleColor="?attr/colorOnSurface"
                 app:cornerRadius="16dp"
-                 />
+                app:rippleColor="@color/greenDark"
+                app:strokeWidth="0dp" />
 
         </LinearLayout>
     </ScrollView>

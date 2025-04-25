@@ -22,5 +22,9 @@
     <string name="edit_question">Frage bearbeiten</string>
     <string name="btn_save_quiz">Quiz speichern</string>
     <string name="number_of_questions">Die Anzahl der Fragen:</string>
+    <string name="quiz_tabs_description">Quiz question pages</string>
+
+    <string name="question_counter">Frage %1$d von %2$d</string>
+    <string name="btn_delete_question">Frage löschen</string>
 
 </resources>

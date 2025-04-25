@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="btnNormalStart"    format="color"/>
+    <attr name="btnNormalEnd"      format="color"/>
+    <attr name="btnPressedStart"   format="color"/>
+    <attr name="btnPressedEnd"     format="color"/>
+</resources>

@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Theme.QuizApp" parent="Theme.AppCompat.Light.NoActionBar"/>
-    <style name="ThemeMC.QuizApp" parent="Theme.MaterialComponents.Light.NoActionBar"/>
+    <style name="ThemeMC.QuizApp" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge"/>
+    <style name="ThemeOverlay.QuizButton.Green" parent="ThemeOverlay.MaterialComponents.Light">
+        <item name="btnNormalStart">@color/greenLight</item>
+        <item name="btnNormalEnd">@color/greenDark</item>
+        <item name="btnPressedStart">@color/greenDark</item>
+        <item name="btnPressedEnd">@color/greenLight</item>
+    </style>
+
+    <style name="ThemeOverlay.QuizButton.Yellow" parent="ThemeOverlay.MaterialComponents.Light">
+        <item name="btnNormalStart">@color/yellowLight</item>
+        <item name="btnNormalEnd">@color/yellowDark</item>
+        <item name="btnPressedStart">@color/yellowDark</item>
+        <item name="btnPressedEnd">@color/yellowLight</item>
+    </style>
 </resources>
