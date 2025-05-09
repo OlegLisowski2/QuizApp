@@ -61,6 +61,7 @@ class QuizQuestionFragment : Fragment(R.layout.questions_answers_create) {
         bindViews(view)
         prefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         loadSavedInput()
+        updateCounter()
 
         // set the counter text: "Frage X von Y"
         val total = (requireActivity() as QuizPagerActivity).questionCount
@@ -90,6 +91,11 @@ class QuizQuestionFragment : Fragment(R.layout.questions_answers_create) {
             (requireActivity() as QuizPagerActivity).deletePage(index)
         }
 
+    }
+
+    fun updateCounter() {
+        val total = (requireActivity() as QuizPagerActivity).questionCount
+        tvCounter.text = getString(R.string.question_counter, index, total)
     }
 
     override fun onPause() {

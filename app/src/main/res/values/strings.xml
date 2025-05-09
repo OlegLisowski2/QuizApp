@@ -24,7 +24,9 @@
     <string name="number_of_questions">Die Anzahl der Fragen:</string>
     <string name="quiz_tabs_description">Quiz question pages</string>
 
-    <string name="question_counter">Frage %1$d von %2$d</string>
+    <string name="question_counter">%1$d von %2$d</string>
     <string name="btn_delete_question">Frage löschen</string>
+    <string name="btn_homepage">Zur Startseite gehen</string>
+    <string name="btn_back_to_quiz">Zurück zur Quiz</string>
 
 </resources>

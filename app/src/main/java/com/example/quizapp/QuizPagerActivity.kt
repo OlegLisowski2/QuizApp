@@ -14,6 +14,7 @@ import com.example.quizapp.QuizQuestionFragment.Companion.KEY_CB_B
 import com.example.quizapp.QuizQuestionFragment.Companion.KEY_CB_C
 import com.example.quizapp.QuizQuestionFragment.Companion.KEY_CB_D
 import com.example.quizapp.QuizQuestionFragment.Companion.KEY_QUESTION
+import androidx.core.content.edit
 
 class QuizPagerActivity : AppCompatActivity() {
     companion object {
@@ -37,19 +38,26 @@ class QuizPagerActivity : AppCompatActivity() {
         prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         loadQuestionCount()
 
-
-
         viewPager = findViewById(R.id.viewPager)
         pagerAdapter = QuizPagerAdapter(this, questionCount)
         viewPager.adapter = pagerAdapter
 
+        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                // find the fragment by tag and call updateCounter()
+                val tag = "f${position}"  // default ViewPager2 tag = "f<itemId>"
+                val frag = supportFragmentManager.findFragmentByTag(tag)
+                        as? QuizQuestionFragment
+                frag?.updateCounter()
+            }
+        })
     }
     /** Fügt eine neue Frage-Seite hinzu, falls unter dem Limit */
     fun addPage() {
         if (questionCount < MAX_QUESTIONS) {
             questionCount++
             // persist the new count
-            prefs.edit().putInt(KEY_QUESTION_COUNT, questionCount).apply()
+            prefs.edit { putInt(KEY_QUESTION_COUNT, questionCount) }
             // update adapter
             pagerAdapter.questionCount = questionCount
             pagerAdapter.notifyItemInserted(questionCount - 1)
@@ -71,23 +79,29 @@ class QuizPagerActivity : AppCompatActivity() {
     fun deletePage(delIndex: Int) {
         if (questionCount <= 1) return
         // Verschiebe alle Daten von i+1 nach i
-        val editor = prefs.edit()
-        for (i in delIndex until questionCount) {
-            moveQuestionData(i + 1, i, editor)
-        }
-        // Entferne letzte Frage
-        clearQuestionData(questionCount, editor)
-        questionCount--
-        editor.putInt(KEY_QUESTION_COUNT, questionCount)
-        editor.apply()
+        prefs.edit {
+            for (i in delIndex until questionCount) {
+                moveQuestionData(i + 1, i, this)
+            }
+            // Entferne letzte Frage
+            clearQuestionData(questionCount, this)
 
-        // Update Adapter
+            putInt(KEY_QUESTION_COUNT, questionCount - 1)
+        }
+
+        questionCount--
+
         pagerAdapter.questionCount = questionCount
         pagerAdapter.notifyItemRemoved(delIndex - 1)
-        // Navigiere
+
+        // compute new position:
+        val newPos = when {
+            delIndex - 1 < questionCount -> delIndex - 1      // middle deletion
+            else                         -> questionCount - 1 // last-page deletion
+        }.coerceAtLeast(0)
+
         viewPager.post {
-            val newPos = (delIndex - 2).coerceAtLeast(0)
-            viewPager.currentItem = newPos
+            viewPager.setCurrentItem(newPos, false)
         }
     }
 

@@ -2,6 +2,14 @@
 <resources>
     <style name="Theme.QuizApp" parent="Theme.AppCompat.Light.NoActionBar"/>
     <style name="ThemeMC.QuizApp" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge"/>
+
+    <style name="ThemeMC.QuizApp.Fullscreen" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- draw under the status bar -->
+        <item name="android:windowFullscreen">true</item>
+        <!-- ensure you handle insets yourself -->
+        <item name="android:fitsSystemWindows">false</item>
+    </style>
+
     <style name="ThemeOverlay.QuizButton.Green" parent="ThemeOverlay.MaterialComponents.Light">
         <item name="btnNormalStart">@color/greenLight</item>
         <item name="btnNormalEnd">@color/greenDark</item>
@@ -15,4 +23,19 @@
         <item name="btnPressedStart">@color/yellowDark</item>
         <item name="btnPressedEnd">@color/yellowLight</item>
     </style>
+
+    <style name="ThemeOverlay.QuizButton.Blue" parent="ThemeOverlay.MaterialComponents.Light">
+        <item name="btnNormalStart">@color/blueLight</item>
+        <item name="btnNormalEnd">@color/blueDark</item>
+        <item name="btnPressedStart">@color/blueDark</item>
+        <item name="btnPressedEnd">@color/blueLight</item>
+    </style>
+
+    <style name="ThemeOverlay.QuizButton.Black" parent="ThemeOverlay.MaterialComponents.Light">
+        <item name="btnNormalStart">@color/blackLight</item>
+        <item name="btnNormalEnd">@color/blackDark</item>
+        <item name="btnPressedStart">@color/blackDark</item>
+        <item name="btnPressedEnd">@color/blackLight</item>
+    </style>
+
 </resources>

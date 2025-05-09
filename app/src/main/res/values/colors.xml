@@ -26,4 +26,13 @@
     <color name="noColor"></color>
     <color name="orange">#FF9800</color>
 
+    <!-- Blau-Töne für Buttons -->
+    <color name="blueLight">#64B5F6</color>   <!-- Material Blue 300 -->
+    <color name="blueDark">#1976D2</color>    <!-- Material Blue 700 -->
+
+    <!-- Light black (dark grey) for elevated surfaces -->
+    <color name="blackLight">#212121</color>   <!-- Material grey 900 level -->
+    <!-- Dark black (nearly pitch) for primary background -->
+    <color name="blackDark">#121212</color>
+
 </resources>
