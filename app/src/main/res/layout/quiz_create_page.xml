@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="false"
-    tools:theme="@style/ThemeMC.QuizApp.Fullscreen"
+    tools:theme="@style/ThemeMC.QuizApp"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#f4f4f4">
 
@@ -14,7 +14,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="@dimen/status_bar_height"
         android:background="@color/purple_500"
         android:padding="16dp"
         android:gravity="center"
@@ -43,171 +42,171 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/container"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="#FFFFFF"
-            android:padding="20dp"
-            android:elevation="4dp"
-            app:layout_constraintBottom_toTopOf="@id/footerRectangle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/headerRectangle">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#FFFFFF"
+        android:padding="20dp"
+        android:elevation="4dp"
+        app:layout_constraintBottom_toTopOf="@id/footerRectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerRectangle">
 
-            <!-- Button: Go to Homepage -->
-            <Button
-                android:id="@+id/btnHomepage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_homepage"
-                android:textSize="20sp"
-                android:theme="@style/ThemeOverlay.QuizButton.Blue"
-                app:backgroundTint="@color/noColor"
-                android:textColor="@android:color/white"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/button_selector"
-                android:stateListAnimator="@animator/button_state_animator"
-                android:elevation="8dp"
-                app:cornerRadius="16dp"
-                app:strokeWidth="0dp"
-                app:rippleColor="@color/blueDark"
-                android:textAllCaps="false"
-                />
+        <!-- Button: Go to Homepage -->
+        <Button
+            android:id="@+id/btnHomepage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_homepage"
+            android:textSize="20sp"
+            android:theme="@style/ThemeOverlay.QuizButton.Blue"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button_selector"
+            android:stateListAnimator="@animator/button_state_animator"
+            android:elevation="8dp"
+            app:cornerRadius="16dp"
+            app:strokeWidth="0dp"
+            app:rippleColor="@color/blueDark"
+            android:textAllCaps="false"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-            <!-- Title -->
-            <TextView
-                android:id="@+id/tvTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_create_quiz"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                android:layout_marginBottom="16dp"/>
+        <!-- Title -->
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_create_quiz"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/btnHomepage"
+            />
 
-            <!-- Quiz Name Input -->
-            <EditText
-                android:id="@+id/etQuizName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/give_quiz_name"
-                android:inputType="text"
-                android:textSize="16sp"
-                android:padding="8dp"
-                android:background="@android:drawable/edit_text"
-                android:layout_marginBottom="8dp"
-                android:importantForAutofill="no"/>
+        <!-- Quiz Name Input -->
+        <EditText
+            android:id="@+id/etQuizName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/give_quiz_name"
+            android:inputType="text"
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginTop="8dp"
+            android:importantForAutofill="no"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"/>
 
-            <!-- Quiz Topic Input -->
-            <EditText
-                android:id="@+id/etQuizTopic"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/give_topic"
-                android:inputType="text"
-                android:textSize="16sp"
-                android:padding="8dp"
-                android:background="@android:drawable/edit_text"
-                android:layout_marginBottom="8dp"
-                android:importantForAutofill="no"/>
+        <!-- Quiz Topic Input -->
+        <EditText
+            android:id="@+id/etQuizTopic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/give_topic"
+            android:inputType="text"
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:background="@android:drawable/edit_text"
+            android:importantForAutofill="no"
+            app:layout_constraintTop_toBottomOf="@id/etQuizName"/>
 
-            <!-- Question Time Input -->
-            <EditText
-                android:id="@+id/etQuestionTime"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/give_time_per_question"
-                android:inputType="number"
-                android:textSize="16sp"
-                android:padding="8dp"
-                android:background="@android:drawable/edit_text"
-                android:layout_marginBottom="8dp"
-                android:importantForAutofill="no"/>
+        <!-- Question Time Input -->
+        <EditText
+            android:id="@+id/etQuestionTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/give_time_per_question"
+            android:inputType="number"
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:background="@android:drawable/edit_text"
+            android:importantForAutofill="no"
+            app:layout_constraintTop_toBottomOf="@id/etQuizTopic"/>
 
-            <!-- Question Count Text -->
-            <TextView
-                android:id="@+id/tvQuestionCount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/number_of_questions"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="8dp"/>
+        <!-- Question Count Text -->
+        <TextView
+            android:id="@+id/tvQuestionCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/number_of_questions"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/etQuestionTime"/>
 
-            <!-- Question Number Input -->
-            <EditText
-                android:id="@+id/etQuestionNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/give_question_number"
-                android:inputType="number"
-                android:textSize="16sp"
-                android:padding="8dp"
-                android:background="@android:drawable/edit_text"
-                android:layout_marginBottom="16dp"
-                android:importantForAutofill="no"/>
+        <!-- Question Number Input -->
+        <EditText
+            android:id="@+id/etQuestionNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/give_question_number"
+            android:inputType="number"
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:drawable/edit_text"
+            android:layout_marginBottom="16dp"
+            android:importantForAutofill="no"
+            app:layout_constraintTop_toBottomOf="@id/tvQuestionCount"/>
 
-            <!-- Button: Edit Question -->
-            <Button
-                android:id="@+id/btnStartEditing"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/edit_question"
-                android:textSize="20sp"
-                android:theme="@style/ThemeOverlay.QuizButton.Yellow"
-                app:backgroundTint="@color/noColor"
-                android:textColor="@android:color/black"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/button_selector"
-                android:stateListAnimator="@animator/button_state_animator"
-                android:elevation="8dp"
-                app:cornerRadius="16dp"
-                app:strokeWidth="0dp"
-                app:rippleColor="@color/yellowDark"
-                android:textAllCaps="false"
-                />
+        <!-- Button: Edit Question -->
+        <Button
+            android:id="@+id/btnEditQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/edit_question"
+            android:textSize="20sp"
+            android:theme="@style/ThemeOverlay.QuizButton.Yellow"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button_selector"
+            android:stateListAnimator="@animator/button_state_animator"
+            android:elevation="8dp"
+            app:cornerRadius="16dp"
+            app:strokeWidth="0dp"
+            app:rippleColor="@color/yellowDark"
+            android:textAllCaps="false"
+            app:layout_constraintTop_toBottomOf="@id/etQuestionNumber"/>
 
-            <!-- Button: Go to Homepage -->
-            <Button
-                android:id="@+id/btnBackToQuiz"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_back_to_quiz"
-                android:textSize="20sp"
-                android:theme="@style/ThemeOverlay.QuizButton.Black"
-                app:backgroundTint="@color/noColor"
-                android:textColor="@android:color/white"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/button_selector"
-                android:stateListAnimator="@animator/button_state_animator"
-                android:elevation="8dp"
-                app:cornerRadius="16dp"
-                app:strokeWidth="0dp"
-                app:rippleColor="@color/blackDark"
-                android:textAllCaps="false"
-                />
+        <!-- Button: Go to Homepage -->
+        <Button
+            android:id="@+id/btnBackToQuiz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_back_to_quiz"
+            android:textSize="20sp"
+            android:theme="@style/ThemeOverlay.QuizButton.Black"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button_selector"
+            android:stateListAnimator="@animator/button_state_animator"
+            android:elevation="8dp"
+            app:cornerRadius="16dp"
+            app:strokeWidth="0dp"
+            app:rippleColor="@color/blackDark"
+            android:textAllCaps="false"
+            app:layout_constraintTop_toBottomOf="@id/btnEditQuestion"
+            app:layout_constraintBottom_toTopOf="@id/btnSaveQuiz"/>
 
-            <!-- Button: Save Quiz -->
-            <Button
-                android:id="@+id/btnSaveQuiz"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button_selector"
-                android:theme="@style/ThemeOverlay.QuizButton.Green"
-                app:backgroundTint="@color/noColor"
-                android:elevation="8dp"
-                android:stateListAnimator="@animator/button_state_animator"
-                android:text="@string/btn_save_quiz"
-                android:textAllCaps="false"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                app:cornerRadius="16dp"
-                app:rippleColor="@color/greenDark"
-                app:strokeWidth="0dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+        <!-- Button: Save Quiz -->
+        <Button
+            android:id="@+id/btnSaveQuiz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_selector"
+            android:theme="@style/ThemeOverlay.QuizButton.Green"
+            android:elevation="8dp"
+            android:stateListAnimator="@animator/button_state_animator"
+            android:text="@string/btn_save_quiz"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            app:cornerRadius="16dp"
+            app:rippleColor="@color/greenDark"
+            app:strokeWidth="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

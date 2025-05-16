@@ -22,6 +22,7 @@ class QuizPagerActivity : AppCompatActivity() {
         private const val KEY_QUESTION_COUNT = "key_question_count"
         private const val DEFAULT_QUESTION_COUNT = 1
         private const val MAX_QUESTIONS = 40
+        const val EXTRA_START_INDEX = "extra_start_index"
     }
 
     lateinit var viewPager: ViewPager2
@@ -42,6 +43,13 @@ class QuizPagerActivity : AppCompatActivity() {
         pagerAdapter = QuizPagerAdapter(this, questionCount)
         viewPager.adapter = pagerAdapter
 
+        // handle incoming start index
+        val startIndex = intent.getIntExtra(EXTRA_START_INDEX, 0)
+        if (startIndex in 0 until questionCount) {
+            // post to wait until adapter’s ready
+            viewPager.post { viewPager.currentItem = startIndex }
+        }
+
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 // find the fragment by tag and call updateCounter()
@@ -51,6 +59,7 @@ class QuizPagerActivity : AppCompatActivity() {
                 frag?.updateCounter()
             }
         })
+
     }
     /** Fügt eine neue Frage-Seite hinzu, falls unter dem Limit */
     fun addPage() {

@@ -4,18 +4,24 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
+import com.example.quizapp.databinding.QuestionsAnswersCreateBinding
 
 class QuizQuestionFragment : Fragment(R.layout.questions_answers_create) {
+    private var _binding: QuestionsAnswersCreateBinding? = null
+    private val binding get() = _binding!!
+
     companion object {
         private const val ARG_INDEX       = "arg_index"
-        internal const val PREFS_NAME      = "quiz_input_prefs"
+        private const val PREFS_NAME      = "quiz_input_prefs"
         private const val MAX_QUESTIONS   = 40
 
         // Base keys; real key = base + "_" + index
@@ -34,8 +40,11 @@ class QuizQuestionFragment : Fragment(R.layout.questions_answers_create) {
         }
     }
 
-    internal val index: Int by lazy { requireArguments().getInt(ARG_INDEX) }
-    internal lateinit var prefs: SharedPreferences
+    private val index: Int by lazy { requireArguments().getInt(ARG_INDEX) }
+    private lateinit var prefs: SharedPreferences
+
+    private lateinit var textFields: List<Pair<EditText,String>>
+    private lateinit var checkFields: List<Pair<CheckBox,String>>
 
     private lateinit var etQuestion: EditText
     private lateinit var etAnswerA:  EditText
@@ -48,6 +57,7 @@ class QuizQuestionFragment : Fragment(R.layout.questions_answers_create) {
     private lateinit var cbAnswerC:  CheckBox
     private lateinit var cbAnswerD:  CheckBox
 
+
     private lateinit var btnMainCreatePage: Button
     private lateinit var btnPrevQuestion: Button
     private lateinit var btnNextQuestion: Button
@@ -55,12 +65,47 @@ class QuizQuestionFragment : Fragment(R.layout.questions_answers_create) {
 
     private lateinit var tvCounter: TextView
 
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = QuestionsAnswersCreateBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         // First bind views, then initialize preferences and load data
-        bindViews(view)
+
         prefs = requireContext().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        loadSavedInput()
+
+
+
+        bindViews(view)
+
+        // Define your mappings
+        val textFields: List<Pair<EditText, String>> = listOf(
+            binding.etQuestion to KEY_QUESTION,
+            binding.etAnswerA  to KEY_ANSWER_A,
+            binding.etAnswerB  to KEY_ANSWER_B,
+            binding.etAnswerC  to KEY_ANSWER_C,
+            binding.etAnswerD  to KEY_ANSWER_D
+        )
+
+        val checkFields: List<Pair<CheckBox, String>> = listOf(
+            binding.cbAnswerA to KEY_CB_A,
+            binding.cbAnswerB to KEY_CB_B,
+            binding.cbAnswerC to KEY_CB_C,
+            binding.cbAnswerD to KEY_CB_D
+        )
+
+        loadSavedInput(textFields, checkFields)
         updateCounter()
 
         // set the counter text: "Frage X von Y"
@@ -109,7 +154,7 @@ class QuizQuestionFragment : Fragment(R.layout.questions_answers_create) {
 
     override fun onPause() {
         super.onPause()
-        saveInput()
+        saveInput(textFields, checkFields)
     }
 
     private fun bindViews(v: View) {
@@ -124,7 +169,7 @@ class QuizQuestionFragment : Fragment(R.layout.questions_answers_create) {
         cbAnswerC  = v.findViewById(R.id.cbAnswerC)
         cbAnswerD  = v.findViewById(R.id.cbAnswerD)
 
-        btnMainCreatePage = v.findViewById(R.id.btnMainCreatePage)
+
         btnPrevQuestion = v.findViewById(R.id.btnPrevQuestion)
         btnNextQuestion = v.findViewById(R.id.btnNextQuestion)
         btnDelete = v.findViewById(R.id.btnDeleteQuestion)
@@ -132,32 +177,32 @@ class QuizQuestionFragment : Fragment(R.layout.questions_answers_create) {
         tvCounter  = v.findViewById(R.id.tvQuestionCounter)
     }
 
-    internal fun getKey(base: String): String = "${base}_$index"
-
-    private fun saveInput() {
-        prefs.edit()
-            .putString(getKey(KEY_QUESTION), etQuestion.text.toString())
-            .putString(getKey(KEY_ANSWER_A),  etAnswerA.text.toString())
-            .putString(getKey(KEY_ANSWER_B),  etAnswerB.text.toString())
-            .putString(getKey(KEY_ANSWER_C),  etAnswerC.text.toString())
-            .putString(getKey(KEY_ANSWER_D),  etAnswerD.text.toString())
-            .putBoolean(getKey(KEY_CB_A), cbAnswerA.isChecked)
-            .putBoolean(getKey(KEY_CB_B), cbAnswerB.isChecked)
-            .putBoolean(getKey(KEY_CB_C), cbAnswerC.isChecked)
-            .putBoolean(getKey(KEY_CB_D), cbAnswerD.isChecked)
-            .apply()
+    private fun saveInput(
+        textFields: List<Pair<EditText, String>>,
+        checkFields: List<Pair<CheckBox, String>>
+    ) {
+        prefs.edit().apply {
+            textFields.forEach { (view, base) ->
+                putString("${base}_$index", view.text.toString())
+            }
+            checkFields.forEach { (view, base) ->
+                putBoolean("${base}_$index", view.isChecked)
+            }
+            apply()
+        }
     }
 
-    private fun loadSavedInput() {
-        etQuestion.setText(prefs.getString(getKey(KEY_QUESTION), ""))
-        etAnswerA .setText(prefs.getString(getKey(KEY_ANSWER_A),  ""))
-        etAnswerB .setText(prefs.getString(getKey(KEY_ANSWER_B),  ""))
-        etAnswerC .setText(prefs.getString(getKey(KEY_ANSWER_C),  ""))
-        etAnswerD .setText(prefs.getString(getKey(KEY_ANSWER_D),  ""))
-
-        cbAnswerA.isChecked = prefs.getBoolean(getKey(KEY_CB_A), false)
-        cbAnswerB.isChecked = prefs.getBoolean(getKey(KEY_CB_B), false)
-        cbAnswerC.isChecked = prefs.getBoolean(getKey(KEY_CB_C), false)
-        cbAnswerD.isChecked = prefs.getBoolean(getKey(KEY_CB_D), false)
+    private fun loadSavedInput(
+        textFields: List<Pair<EditText, String>>,
+        checkFields: List<Pair<CheckBox, String>>
+    ) {
+        textFields.forEach { (view, base) ->
+            val value = prefs.getString("${base}_$index", "") ?: ""
+            view.setText(value)
+        }
+        checkFields.forEach { (view, base) ->
+            val checked = prefs.getBoolean("${base}_$index", false)
+            view.isChecked = checked
+        }
     }
 }

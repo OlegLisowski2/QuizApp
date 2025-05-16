@@ -15,7 +15,7 @@ import androidx.viewpager2.widget.ViewPager2
 class QuizQuestionFragment : Fragment(R.layout.questions_answers_create) {
     companion object {
         private const val ARG_INDEX       = "arg_index"
-        internal const val PREFS_NAME      = "quiz_input_prefs"
+        private const val PREFS_NAME      = "quiz_input_prefs"
         private const val MAX_QUESTIONS   = 40
 
         // Base keys; real key = base + "_" + index
@@ -34,8 +34,8 @@ class QuizQuestionFragment : Fragment(R.layout.questions_answers_create) {
         }
     }
 
-    internal val index: Int by lazy { requireArguments().getInt(ARG_INDEX) }
-    internal lateinit var prefs: SharedPreferences
+    private val index: Int by lazy { requireArguments().getInt(ARG_INDEX) }
+    private lateinit var prefs: SharedPreferences
 
     private lateinit var etQuestion: EditText
     private lateinit var etAnswerA:  EditText
@@ -132,7 +132,7 @@ class QuizQuestionFragment : Fragment(R.layout.questions_answers_create) {
         tvCounter  = v.findViewById(R.id.tvQuestionCounter)
     }
 
-    internal fun getKey(base: String): String = "${base}_$index"
+    private fun getKey(base: String): String = "${base}_$index"
 
     private fun saveInput() {
         prefs.edit()

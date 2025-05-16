@@ -23,7 +23,6 @@
     <!-- Yellow variants -->
     <color name="yellowLight">#FFF59D</color>    <!-- Material Yellow 200 -->
     <color name="yellowDark">#FBC02D</color>     <!-- Material Yellow 700 -->
-    <color name="noColor"></color>
     <color name="orange">#FF9800</color>
 
     <!-- Blau-Töne für Buttons -->

@@ -31,7 +31,7 @@
         <activity
             android:name=".QuizCreateActivity"
             android:exported="true"
-            android:theme="@style/ThemeMC.QuizApp.Fullscreen"/>
+            android:theme="@style/ThemeMC.QuizApp"/>
 
         <activity
             android:name=".QuizPagerActivity"
