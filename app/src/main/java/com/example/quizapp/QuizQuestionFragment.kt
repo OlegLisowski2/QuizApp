@@ -14,39 +14,39 @@ import androidx.viewpager2.widget.ViewPager2
 
 class QuizQuestionFragment : Fragment(R.layout.questions_answers_create) {
     companion object {
-        private const val ARG_INDEX       = "arg_index"
-        internal const val PREFS_NAME      = "quiz_input_prefs"
-        private const val MAX_QUESTIONS   = 40
+        internal const val ARG_INDEX = "arg_index"
+        internal const val PREFS_NAME = "quiz_input_prefs"
+        private const val MAX_QUESTIONS = 40
 
         // Base keys; real key = base + "_" + index
-        internal const val KEY_QUESTION    = "key_question"
-        internal const val KEY_ANSWER_A    = "key_answer_a"
-        internal const val KEY_ANSWER_B    = "key_answer_b"
-        internal const val KEY_ANSWER_C    = "key_answer_c"
-        internal const val KEY_ANSWER_D    = "key_answer_d"
-        internal const val KEY_CB_A        = "key_cb_a"
-        internal const val KEY_CB_B        = "key_cb_b"
-        internal const val KEY_CB_C        = "key_cb_c"
-        internal const val KEY_CB_D        = "key_cb_d"
+        internal const val KEY_QUESTION = "key_question"
+        internal const val KEY_ANSWER_A = "key_answer_a"
+        internal const val KEY_ANSWER_B = "key_answer_b"
+        internal const val KEY_ANSWER_C = "key_answer_c"
+        internal const val KEY_ANSWER_D = "key_answer_d"
+        internal const val KEY_CB_A = "key_cb_a"
+        internal const val KEY_CB_B = "key_cb_b"
+        internal const val KEY_CB_C = "key_cb_c"
+        internal const val KEY_CB_D = "key_cb_d"
 
         fun newInstance(index: Int): QuizQuestionFragment = QuizQuestionFragment().apply {
             arguments = Bundle().apply { putInt(ARG_INDEX, index) }
         }
     }
 
-    internal val index: Int by lazy { requireArguments().getInt(ARG_INDEX) }
-    internal lateinit var prefs: SharedPreferences
+    val index: Int by lazy { requireArguments().getInt(ARG_INDEX) }
+    lateinit var prefs: SharedPreferences
 
     private lateinit var etQuestion: EditText
-    private lateinit var etAnswerA:  EditText
-    private lateinit var etAnswerB:  EditText
-    private lateinit var etAnswerC:  EditText
-    private lateinit var etAnswerD:  EditText
+     lateinit var etAnswerA: EditText
+     lateinit var etAnswerB: EditText
+    lateinit var etAnswerC: EditText
+    lateinit var etAnswerD: EditText
 
-    private lateinit var cbAnswerA:  CheckBox
-    private lateinit var cbAnswerB:  CheckBox
-    private lateinit var cbAnswerC:  CheckBox
-    private lateinit var cbAnswerD:  CheckBox
+    private lateinit var cbAnswerA: CheckBox
+    private lateinit var cbAnswerB: CheckBox
+    private lateinit var cbAnswerC: CheckBox
+    private lateinit var cbAnswerD: CheckBox
 
     private lateinit var btnMainCreatePage: Button
     private lateinit var btnPrevQuestion: Button
@@ -102,6 +102,7 @@ class QuizQuestionFragment : Fragment(R.layout.questions_answers_create) {
 
     }
 
+
     fun updateCounter() {
         val total = (requireActivity() as QuizPagerActivity).questionCount
         tvCounter.text = getString(R.string.question_counter, index, total)
@@ -132,7 +133,7 @@ class QuizQuestionFragment : Fragment(R.layout.questions_answers_create) {
         tvCounter  = v.findViewById(R.id.tvQuestionCounter)
     }
 
-    internal fun getKey(base: String): String = "${base}_$index"
+    private fun getKey(base: String): String = "${base}_$index"
 
     private fun saveInput() {
         prefs.edit()
